@@ -1,18 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebXR Demo</title>
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component-min-js"></script>
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
 </head>
+
 <body>
     <a-scene>
-        <a-box color="pink" position="0 2 -5">
-            <a-sphere position="4 6 10" color="red"></a-sphere>
+
+        <a-assets>
+            <img id="boxTexture" src="image-1.jpg" />
+            <img src="image.jpg" id="background">
+        </a-assets>
+        <!-- <a-entity environment="preset: threetowers"></a-entity> -->
+        <a-box src="#boxTexture" position="2 -5 -5" scale="2 2 2" roration="0 45 45" animation__mouseenter="">
+            <a-sphere position="4 -2 -10" src="#boxTexture" scale="3 3 3"></a-sphere>
         </a-box>
+
+        <a-box src="#boxTexture" position="0 2 -5" rotation="0 45 45" scale="2 2 2"
+            animation="property:object3D.position.y; to: 10.1; dir: alternate; dur: 2000; loop: true"></a-box>
+
+        <a-sky src="#background"></a-sky>
     </a-scene>
 </body>
+
 </html>
